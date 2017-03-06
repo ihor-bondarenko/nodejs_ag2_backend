@@ -1,0 +1,23 @@
+{
+  "name": "nodejs_ag2",
+  "version": "1.0.0",
+  "description": "Nodejs2Ag2 backend",
+  "main": "index.js",
+  "dependencies": {
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihor-bondarenko/nodejs_ag2_backend.git"
+  },
+  "author": "Ihor Bondarenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ihor-bondarenko/nodejs_ag2_backend/issues"
+  },
+  "homepage": "https://github.com/ihor-bondarenko/nodejs_ag2_backend#readme"
+}
