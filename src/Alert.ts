@@ -1,5 +1,7 @@
 "use strict";
 
+import * as _ from "lodash";
+
 class AlertObjInfoParameter {
     constructor() {
         //
@@ -34,7 +36,9 @@ class AlertObj {
         public info: AlertObjInfo[]
     ) {
         let _i: AlertObjInfo = info[0];
-        console.log(_i.parameter);
+        _.forEach(info, (v, k) => {
+            console.log(v);
+        });
     }
 }
 

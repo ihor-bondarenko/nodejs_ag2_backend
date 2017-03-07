@@ -1,6 +1,7 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var _ = require("lodash");
 var AlertObjInfoParameter = function () {
     function AlertObjInfoParameter() {}
     return AlertObjInfoParameter;
@@ -30,7 +31,9 @@ var AlertObj = function () {
         this.incidents = incidents;
         this.info = info;
         var _i = info[0];
-        console.log(_i.parameter);
+        _.forEach(info, function (v, k) {
+            console.log(v);
+        });
     }
     return AlertObj;
 }();
