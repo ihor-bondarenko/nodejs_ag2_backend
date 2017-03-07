@@ -1,9 +1,10 @@
 "use strict";
+
 var fs = require("fs");
 var xml = require("xml2js");
 var _ = require("lodash");
 var Alert_1 = require("./Alert");
-var Server = (function () {
+var Server = function () {
     function Server() {
         this.parseXML();
     }
@@ -27,6 +28,7 @@ var Server = (function () {
         });
     };
     return Server;
-}());
+}();
 var server = new Server();
 module.exports = server;
+//# sourceMappingURL=index.js.map

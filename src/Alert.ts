@@ -33,7 +33,7 @@ class AlertObj {
         public incidents: string[],
         public info: AlertObjInfo[]
     ) {
-        let _i: AlertObjInfo[] = info;
+        let _i: AlertObjInfo = info[0];
         console.log(_i.parameter);
     }
 }
