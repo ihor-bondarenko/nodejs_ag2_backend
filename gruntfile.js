@@ -26,8 +26,8 @@ module.exports = function(grunt) {
                     "expand": true,
                     "cwd": "dist/",
                     "src": ["**/*.js"],
-                    "dest": "dist/js-compiled/",
-                    "ext": "-compiled.js"
+                    "dest": "dist/"
+                    //"ext": "-compiled.js"
                 }]
             }
         },

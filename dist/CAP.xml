@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+<identifier>GDACS_EQ_1111_2222</identifier>
+<sender>info@gdacs.org</sender>
+<sent>2016-11-29T09:19:16-00:00</sent>
+<status>Actual</status>
+<msgType>Alert</msgType>
+<scope>Public</scope>
+<incidents>111111</incidents>
+<info>
+<category>Geo</category>
+<event>Earthquake</event>
+<urgency>Past</urgency>
+<severity>Severe</severity>
+<certainty>Observed</certainty>
+<senderName>Global Disaster Alert and Coordination System</senderName>
+<headline>Orange earthquake alert (Magnitude 6.2M, Depth:10.54km) in Italy, Slovenia, Austria border 11/15/2016 09:19 UTC, About 260000 people within 100km.
+</headline>
+<description>On 11/15/2016 at 10:19 local time an earthquake of high intensity has taken place in the border region of Italy, Slovenia and Austria. The earthquake had magnitude 6.0M, Depth: 10.54km.
+</description>
+<web>http://www.gdacs.org/report.aspx?eventype=EQ&amp;eventid=1098359
+</web>
+<parameter>
+<valueName>eventid</valueName>
+<value>3333333</value>
+</parameter>
+<parameter>
+<valueName>currentepisodeid</valueName>
+<value>1146775</value>
+</parameter>
+<parameter>
+<valueName>version</valueName>
+<value>1</value>
+</parameter>
+<parameter>
+<valueName>fromdate</valueName>
+<value>Tue, 15 Nov 2016 09:30:16 GMT</value>
+</parameter>
+<parameter>
+<valueName>todate</valueName>
+<value>Tue, 15 Nov 2016 09:30:16 GMT</value>
+</parameter>
+<parameter>
+<valueName>eventtype</valueName>
+<value>EQ</value>
+</parameter>
+<parameter>
+<valueName>alertlevel</valueName>
+<value>Orange</value>
+</parameter>
+<parameter>
+<valueName>alerttype</valueName>
+<value>automatic</value>
+</parameter>
+<parameter>
+<valueName>country</valueName>
+<value>Italy</value>
+</parameter>
+<parameter>
+<valueName>severity</valueName>
+<value>Magnitude 6.2M, Depth:10.54km</value>
+</parameter>
+<parameter>
+<valueName>population</valueName>
+<value>About 26000 people within 100km</value>
+</parameter>
+<parameter>
+<valueName>vulnerability</valueName>
+<value/>
+</parameter>
+<parameter>
+<valueName>sourceid</valueName>
+<value>NEIC</value>
+</parameter>
+<parameter>
+<valueName>iso3</valueName>
+<value>ITA</value></parameter>
+<parameter>
+<valueName>hazardcomponents</valueName>
+<value>EQ,magnitude=6.2,depth=10.54,alertleveltype=EQ;JETS=true</value>
+</parameter>
+<parameter>
+<valueName>datemodified</valueName>
+<value>Tue, 15 Nov 2016 09:30:16 GMT</value>
+</parameter>
+<area>
+<areaDesc>33040 Drenchia UD, Italy</areaDesc>
+<polygon>46.2140508,13.2989502 46.5890691,13.4747314 46.6569773,14.1503906 46.2520485,14.6063232 45.8976545,14.2877197 45.8689752,13.7301636 45.9702426,13.3621216 46.2140508,13.2989502</polygon>
+<circle>46.170321,13.6312866 0.01</circle>
+</area>
+</info>
+</alert>
