@@ -1,13 +1,53 @@
 "use strict";
-const _ = require("lodash");
-class Server {
-    static bootstrap() {
-        return new Server();
+var appCC = require("./dist/index");
+var net = require('net');
+var http = require('http'),
+    express = require('express'),
+    app = express();
+
+const PORT = 8124;
+http.createServer(app).listen(PORT);
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-XSRF-TOKEN");
+    next();
+});
+
+app.get('/get-table-structure', function (req, res) {
+    appCC.getDbStructure(function(json){
+        return res.json(json);
+    });
+});
+
+app.get('/test', function (req, res) {
+    appCC.getDbStructure(function(json){
+        return res.json(['ok']);
+    });
+});
+/*var server = net.createServer(function(conn) {
+    console.log('connected');
+    conn.on('data', function (data) {
+        console.log(data);
+        conn.write('Repeating: ' + data);
+    });
+    conn.on('close', function() {
+        console.log('client closed connection');
+    });
+}).listen(PORT);
+server.on('listening', function() {
+    console.log('listening on ' + PORT);
+});
+server.on('error', function(err){
+    if (err.code == 'EADDRINUSE') {
+        console.warn('Address in use, retrying...');
+        setTimeout(() => {
+            server.close();
+            server.listen(PORT);
+        }, 1000);
     }
-    constructor() {
-        let xml = "";
-        console.log(_.isObject(xml));
+    else {
+        console.error(err);
     }
-}
-var server = new Server();
-module.exports = server;
+});*/
+

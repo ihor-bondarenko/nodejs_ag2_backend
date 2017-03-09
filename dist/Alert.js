@@ -1,12 +1,12 @@
 "use strict";
-
 Object.defineProperty(exports, "__esModule", { value: true });
 var _ = require("lodash");
-var AlertObjInfoParameter = function () {
-    function AlertObjInfoParameter() {}
+var AlertObjInfoParameter = (function () {
+    function AlertObjInfoParameter() {
+    }
     return AlertObjInfoParameter;
-}();
-var AlertObjInfo = function () {
+}());
+var AlertObjInfo = (function () {
     function AlertObjInfo(category, event, severity, certainty, senderName, headline, description, web, parameter) {
         this.category = category;
         this.event = event;
@@ -19,8 +19,8 @@ var AlertObjInfo = function () {
         this.parameter = parameter;
     }
     return AlertObjInfo;
-}();
-var AlertObj = function () {
+}());
+var AlertObj = (function () {
     function AlertObj(identifier, sender, sent, status, msgType, scope, incidents, info) {
         this.identifier = identifier;
         this.sender = sender;
@@ -36,8 +36,8 @@ var AlertObj = function () {
         });
     }
     return AlertObj;
-}();
-var Alert = function () {
+}());
+var Alert = (function () {
     function Alert(alert) {
         this.alert = alert;
         this.alertObj = new AlertObj(alert.identifier, alert.sender, alert.sent, alert.status, alert.msgType, alert.scope, alert.incidents, alert.info);
@@ -49,6 +49,5 @@ var Alert = function () {
         return this.alertObj;
     };
     return Alert;
-}();
+}());
 exports.default = Alert;
-//# sourceMappingURL=Alert.js.map

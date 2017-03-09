@@ -1,12 +1,11 @@
 "use strict";
-
 var fs = require("fs");
 var xml = require("xml2js");
 var _ = require("lodash");
 var Alert_1 = require("./Alert");
-var Server = function () {
+var Pg_1 = require("./Pg");
+var Server = (function () {
     function Server() {
-        this.parseXML();
     }
     Server.bootstrap = function () {
         return new Server();
@@ -27,8 +26,11 @@ var Server = function () {
             });
         });
     };
+    Server.prototype.getDbStructure = function (callback) {
+        var pg = new Pg_1.default();
+        return pg.runClient(callback);
+    };
     return Server;
-}();
+}());
 var server = new Server();
 module.exports = server;
-//# sourceMappingURL=index.js.map

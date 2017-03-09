@@ -7,6 +7,7 @@ import * as path from "path";
 import * as xml from "xml2js";
 import * as _ from "lodash";
 import Alert from "./Alert";
+import Pg from "./Pg"
 
 /**
  * The server.
@@ -26,7 +27,7 @@ class Server {
      * @constructor
      */
     constructor() {
-        this.parseXML();
+        //this.parseXML();
     }
 
     parseNewAlert(a: any): Alert {
@@ -48,6 +49,11 @@ class Server {
                 }
             });
         });
+    }
+
+    getDbStructure(callback: any) {
+        let pg = new Pg();
+        return pg.runClient(callback);
     }
 }
 
