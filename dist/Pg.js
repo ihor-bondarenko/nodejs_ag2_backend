@@ -8,7 +8,7 @@ var Pg = (function () {
     function Pg() {
         this.config = {
             user: 'postgres',
-            database: 'drk-bw-gd',
+            database: 'rco',
             password: 'igor1987',
             host: 'localhost',
             port: 5432,
@@ -17,10 +17,7 @@ var Pg = (function () {
         };
         this.client = null;
     }
-    Pg.prototype.runClient = function (callback) {
-        return this.initPgClient(callback);
-    };
-    Pg.prototype.initPgClient = function (callback) {
+    Pg.prototype.initPgClient = function (resolve, reject) {
         var self = this;
         var pgTableStructure = [];
         this.client = new pg.Client(this.config);
@@ -54,13 +51,10 @@ var Pg = (function () {
                             pgTableStructure.push(new PgTable_1.default(value['table_name'], columnsObjects_1));
                         }
                     });
-                    if (_.isFunction(callback)) {
-                        callback(pgTableStructure);
-                    }
+                    resolve(pgTableStructure);
                 }
             });
         });
-        return pgTableStructure;
     };
     return Pg;
 }());

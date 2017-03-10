@@ -51,9 +51,14 @@ class Server {
         });
     }
 
-    getDbStructure(callback: any) {
-        let pg = new Pg();
-        return pg.runClient(callback);
+    getDbStructure():Promise<any> {
+        return new Promise((resolve,reject)=>{
+            let pg = new Pg();
+            let _d = pg.initPgClient(resolve,reject);
+        });
+        //return 'data';
+        /*let pg = new Pg();
+        return pg.runClient(callback);*/
     }
 }
 

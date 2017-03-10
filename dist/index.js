@@ -26,9 +26,11 @@ var Server = (function () {
             });
         });
     };
-    Server.prototype.getDbStructure = function (callback) {
-        var pg = new Pg_1.default();
-        return pg.runClient(callback);
+    Server.prototype.getDbStructure = function () {
+        return new Promise(function (resolve, reject) {
+            var pg = new Pg_1.default();
+            var _d = pg.initPgClient(resolve, reject);
+        });
     };
     return Server;
 }());

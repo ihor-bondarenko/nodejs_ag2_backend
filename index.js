@@ -1,5 +1,7 @@
 "use strict";
+
 var appCC = require("./dist/index");
+var Promise = require('bluebird');
 var net = require('net');
 var http = require('http'),
     express = require('express'),
@@ -15,14 +17,18 @@ app.use(function(req, res, next) {
 });
 
 app.get('/get-table-structure', function (req, res) {
-    appCC.getDbStructure(function(json){
-        return res.json(json);
+    appCC.getDbStructure().then(function(data){
+        return res.json(data);
+    }).catch(function(err){
+        return res.json(err);
     });
 });
 
 app.get('/test', function (req, res) {
-    appCC.getDbStructure(function(json){
-        return res.json(['ok']);
+    appCC.getDbStructure().then(function(data){
+        return res.json(data);
+    }).catch(function(err){
+        return res.json(err);
     });
 });
 /*var server = net.createServer(function(conn) {

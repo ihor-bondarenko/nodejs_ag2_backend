@@ -8,7 +8,7 @@ import PgColumn from "./PgColumn";
 class Pg {
     private config: Object = {
         user: 'postgres', //env var: PGUSER
-        database: 'drk-bw-gd', //env var: PGDATABASE
+        database: 'rco', //env var: PGDATABASE
         password: 'igor1987', //env var: PGPASSWORD
         host: 'localhost', // Server hosting the postgres database
         port: 5432, //env var: PGPORT
@@ -21,11 +21,11 @@ class Pg {
         //this.initPgClient();
     }
 
-    public runClient(callback: any) {
+    /*public runClient(resolve: any, reject: any) {
         return this.initPgClient(callback);
-    }
+    }*/
 
-    private initPgClient(callback: any) {
+    public initPgClient(resolve: any, reject: any) {
         let self = this;
         let pgTableStructure: PgTable[] = [];
         this.client = new pg.Client(this.config);
@@ -56,15 +56,16 @@ class Pg {
                             pgTableStructure.push(new PgTable(value['table_name'],columnsObjects))
                         }
                     });
-                    if(_.isFunction(callback)){
+                    /*if(_.isFunction(callback)){
                         callback(pgTableStructure)
-                    }
+                    }*/
                     //console.log(result.rows);
                     //console.log(pgTableStructure);
+                    resolve(pgTableStructure);
                 }
             });
         });
-        return pgTableStructure;
+        //return pgTableStructure;
     }
 }
 
