@@ -60,6 +60,13 @@ class Server {
         /*let pg = new Pg();
         return pg.runClient(callback);*/
     }
+    getDbStructureCompareWith():Promise<any> {
+        return new Promise((resolve,reject)=>{
+            let pg = new Pg();
+            pg.config.database = 'lk-hol';
+            let _d = pg.initPgClient(resolve,reject);
+        });
+    }
 }
 
 var server = new Server();

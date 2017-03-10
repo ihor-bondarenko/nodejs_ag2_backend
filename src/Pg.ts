@@ -6,9 +6,9 @@ import PgTable from "./PgTable";
 import PgColumn from "./PgColumn";
 
 class Pg {
-    private config: Object = {
+    public config: any = {
         user: 'postgres', //env var: PGUSER
-        database: 'rco', //env var: PGDATABASE
+        database: 'drk-bw-dg2', //env var: PGDATABASE
         password: 'igor1987', //env var: PGPASSWORD
         host: 'localhost', // Server hosting the postgres database
         port: 5432, //env var: PGPORT
@@ -46,7 +46,7 @@ class Pg {
                             let columnsObjects: PgColumn[] = [];
                             if(_.has(value,'colums') && _.has(value,'colums_types')){
                                 columns = _.toString(value['colums']).split(':');
-                                console.log(columns);
+                               // console.log(columns);
                                 columnsTypes = _.toString(value['colums_types']).split(':');
                                 _.forEach(columns,(v,k) => {
                                     let _cObj = new PgColumn(v,columnsTypes[k]);

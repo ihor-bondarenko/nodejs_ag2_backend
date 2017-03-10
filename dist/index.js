@@ -32,6 +32,13 @@ var Server = (function () {
             var _d = pg.initPgClient(resolve, reject);
         });
     };
+    Server.prototype.getDbStructureCompareWith = function () {
+        return new Promise(function (resolve, reject) {
+            var pg = new Pg_1.default();
+            pg.config.database = 'lk-hol';
+            var _d = pg.initPgClient(resolve, reject);
+        });
+    };
     return Server;
 }());
 var server = new Server();

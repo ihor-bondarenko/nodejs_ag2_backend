@@ -8,7 +8,7 @@ var Pg = (function () {
     function Pg() {
         this.config = {
             user: 'postgres',
-            database: 'rco',
+            database: 'drk-bw-dg2',
             password: 'igor1987',
             host: 'localhost',
             port: 5432,
@@ -41,7 +41,6 @@ var Pg = (function () {
                             var columnsObjects_1 = [];
                             if (_.has(value, 'colums') && _.has(value, 'colums_types')) {
                                 columns = _.toString(value['colums']).split(':');
-                                console.log(columns);
                                 columnsTypes_1 = _.toString(value['colums_types']).split(':');
                                 _.forEach(columns, function (v, k) {
                                     var _cObj = new PgColumn_1.default(v, columnsTypes_1[k]);
