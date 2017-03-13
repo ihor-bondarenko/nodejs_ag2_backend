@@ -17,6 +17,9 @@ import Pg from "./Pg"
 class Server {
     public app: any;
     public alert: Alert;
+
+    public mainTableStructure;
+
     public static bootstrap(): Server {
         return new Server();
     }
@@ -69,5 +72,5 @@ class Server {
     }
 }
 
-var server = new Server();
-export = server;
+//var server = new Server();
+export default Server;
