@@ -5,6 +5,7 @@ import * as socketIo from "socket.io";
 import * as http from "http";
 import NodeApp from "../NodeApp";
 import * as moment from "moment";
+import Version from "../Version"
 
 class SocketIOServer {
     public io: any;
@@ -28,6 +29,13 @@ class SocketIOServer {
                 }).catch(function(err: any){
                     //return res.json(err);
                 });
+            });
+            socket.on("get-versions-list",function(){
+                let versions: Version[] = [
+                    new Version(1,'einsatzv1.ccommander.net'),
+                    new Version(2,'localhost')
+                ];
+                socket.emit("new-versions-list",versions);
             });
         });
     }

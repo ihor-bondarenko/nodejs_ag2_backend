@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var socketIo = require("socket.io");
 var moment = require("moment");
+var Version_1 = require("../Version");
 var SocketIOServer = (function () {
     function SocketIOServer(nodeApp) {
         this.nodeApp = nodeApp;
@@ -19,6 +20,13 @@ var SocketIOServer = (function () {
                     self.io.of('/clients').emit('last-structure-update', date);
                 }).catch(function (err) {
                 });
+            });
+            socket.on("get-versions-list", function () {
+                var versions = [
+                    new Version_1.default(1, 'einsatzv1.ccommander.net'),
+                    new Version_1.default(2, 'localhost')
+                ];
+                socket.emit("new-versions-list", versions);
             });
         });
     };
