@@ -1,11 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var _ = require("lodash");
 var socketIo = require("socket.io");
 var moment = require("moment");
 var Version_1 = require("../Version");
 var SocketIOServer = (function () {
     function SocketIOServer(nodeApp) {
         this.nodeApp = nodeApp;
+        this.versions = [];
+        this.versions = [
+            new Version_1.default(1, 'einsatzv1.ccommander.net'),
+            new Version_1.default(2, 'localhost')
+        ];
         this.initIO();
     }
     SocketIOServer.prototype.initIO = function () {
@@ -22,11 +28,14 @@ var SocketIOServer = (function () {
                 });
             });
             socket.on("get-versions-list", function () {
-                var versions = [
-                    new Version_1.default(1, 'einsatzv1.ccommander.net'),
-                    new Version_1.default(2, 'localhost')
-                ];
-                socket.emit("new-versions-list", versions);
+                socket.emit("new-versions-list", self.versions);
+            });
+            socket.on("update-version-data", function (version) {
+                var objIndex = _.findIndex(self.versions, { id: version.id });
+                if (objIndex !== -1) {
+                    self.versions[objIndex] = version;
+                    socket.broadcast.emit("updated-version-data", version);
+                }
             });
         });
     };
