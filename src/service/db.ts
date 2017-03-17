@@ -12,6 +12,7 @@ class DbService {
     private host: string = '127.0.0.1';
     private port: number = 28015;
     public db: any;
+    private connection: any;
 
     constructor() {
         this.init();
@@ -33,15 +34,24 @@ class DbService {
             ]).run(conn, function(err, data){
                 console.log(err);
             });*/
+            this.connection = conn;
             this.db.table('version').run(conn,function(err: any, cursor: any){
-                if (err) { throw err };
+                if (err) { throw err }
                 cursor.toArray(function(err: any, result: any) {
-                    if (err) { throw err };
+                    if (err) { throw err }
                     console.log(JSON.stringify(result, null, 2));
                 });
             });
         }).error((err: any) => {
 //
+        });
+    }
+
+    getVersionsList(){
+        this.db.table('versions').run(this.connection).then((cursor: any) => {
+            return cursor.toArray();
+        }).then((result) => {
+            console.log(result);
         });
     }
 

@@ -8,6 +8,7 @@ import * as mongoose from "mongoose";
 import SocketIOServer from "./service/socket.io";
 import Server from "./Server";
 import DbService from "./service/db";
+import VersionsService from "./service/versions";
 
 const PORT = 8124;
 
@@ -17,6 +18,7 @@ class NodeApp {
     public serverHttp: http.Server;
     public server: Server;
     public db: DbService;
+    public versions: VersionsService;
 
     public static bootstrap() {
         return new NodeApp();
@@ -29,6 +31,7 @@ class NodeApp {
         this.serverHttp.listen(PORT);
         this.server = new Server();
         this.db = new DbService();
+        this.versions = new VersionsService(this);
     }
 }
 
