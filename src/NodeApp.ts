@@ -27,10 +27,10 @@ class NodeApp {
     constructor() {
         this.app = express();
         this.serverHttp = http.createServer(this.app);
+        this.db = new DbService();
         this.io = new SocketIOServer(this);
         this.serverHttp.listen(PORT);
         this.server = new Server();
-        this.db = new DbService();
         this.versions = new VersionsService(this);
     }
 }

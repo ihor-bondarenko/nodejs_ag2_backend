@@ -11,10 +11,10 @@ var NodeApp = (function () {
     function NodeApp() {
         this.app = express();
         this.serverHttp = http.createServer(this.app);
+        this.db = new db_1.default();
         this.io = new socket_io_1.default(this);
         this.serverHttp.listen(PORT);
         this.server = new Server_1.default();
-        this.db = new db_1.default();
         this.versions = new versions_1.default(this);
     }
     NodeApp.bootstrap = function () {

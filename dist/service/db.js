@@ -15,26 +15,10 @@ var DbService = (function () {
         var _this = this;
         this.db.connect({ "db": "versions", "host": this.host, "port": this.port }).then(function (conn) {
             _this.connection = conn;
-            _this.db.table('version').run(conn, function (err, cursor) {
-                if (err) {
-                    throw err;
-                }
-                cursor.toArray(function (err, result) {
-                    if (err) {
-                        throw err;
-                    }
-                    console.log(JSON.stringify(result, null, 2));
-                });
-            });
         }).error(function (err) {
         });
     };
     DbService.prototype.getVersionsList = function () {
-        this.db.table('versions').run(this.connection).then(function (cursor) {
-            return cursor.toArray();
-        }).then(function (result) {
-            console.log(result);
-        });
     };
     return DbService;
 }());

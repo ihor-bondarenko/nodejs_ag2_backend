@@ -22,15 +22,17 @@ var SocketIOServer = (function () {
                 });
             });
             socket.on("get-versions-list", function () {
-                socket.emit("new-versions-list", self.nodeApp.db.getVersionsList());
+                self.nodeApp.versions.getList().then(function (res) {
+                    socket.emit("new-versions-list", res);
+                });
             });
             socket.on("update-version-data", function (version) {
-                var versions = self.nodeApp.db.getVersionsList();
-                var objIndex = _.findIndex(versions, { id: version.id });
-                if (objIndex !== -1) {
-                    self.versions[objIndex] = version;
-                    socket.broadcast.emit("updated-version-data", version);
-                }
+                self.nodeApp.versions.getList().then(function (res) {
+                    var objIndex = _.findIndex(res, { id: version.id });
+                    if (objIndex !== -1) {
+                        socket.broadcast.emit("updated-version-data", version);
+                    }
+                });
             });
         });
     };

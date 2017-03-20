@@ -6,18 +6,22 @@ import Version from "../Version";
 
 class VersionsService {
     public versions: Version[];
-    private nodeApp: NodeApp;
 
     constructor(private nodeApp: NodeApp){
-        console.log(nodeApp);
+        //console.log(nodeApp);
     }
 
     updateVersionData(){
-
+        //
     }
 
-    getVersionsList(){
-
+    getList(){
+        return this.nodeApp.db.db.table('version').run(this.nodeApp.db.connection).then((cursor: any) => {
+            return cursor.toArray();
+        }).then((result) => {
+            return result;
+           //return result;
+        });
     }
 }
 

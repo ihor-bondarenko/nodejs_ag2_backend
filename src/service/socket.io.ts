@@ -34,15 +34,18 @@ class SocketIOServer {
                 });
             });
             socket.on("get-versions-list",function(){
-                socket.emit("new-versions-list",self.nodeApp.db.getVersionsList());
+                self.nodeApp.versions.getList().then((res) => {
+                    socket.emit("new-versions-list",res);
+                })
             });
             socket.on("update-version-data",function(version: any){
-                let versions = self.nodeApp.db.getVersionsList();
-                let objIndex = _.findIndex(versions,{id: version.id});
-                if(objIndex !== -1){
-                    self.versions[objIndex] =  version;
-                    socket.broadcast.emit("updated-version-data",version);
-                }
+                self.nodeApp.versions.getList().then((res) => {
+                    let objIndex = _.findIndex(res,{id: version.id});
+                    if(objIndex !== -1){
+                        //versions[objIndex] =  version;
+                        socket.broadcast.emit("updated-version-data",version);
+                    }
+                });
             });
         });
     }
