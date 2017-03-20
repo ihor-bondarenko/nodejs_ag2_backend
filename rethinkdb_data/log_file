@@ -45,3 +45,8 @@
 2017-03-20T18:38:43.096689560 0.236384s notice: Server ready, "calculate_zjn" 440896a7-2218-4d83-bb47-ff03df7e6c53
 2017-03-20T18:38:44.636731779 1.776428s info: Table 6c7ca9b1-2bb4-470d-bdbd-adaa48e63a66: Starting a new Raft election for term 2.
 2017-03-20T18:38:44.676072792 1.815768s info: Table 6c7ca9b1-2bb4-470d-bdbd-adaa48e63a66: This server is Raft leader for term 2. Latest log index is 2.
+2017-03-20T19:19:45.950965190 2463.090660s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-03-20T19:19:45.951178276 2463.090873s notice: Shutting down client connections...
+2017-03-20T19:19:45.951349641 2463.091045s notice: All client connections closed.
+2017-03-20T19:19:45.951354842 2463.091049s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-03-20T19:19:45.980303815 2463.119998s notice: Storage engine shut down.
